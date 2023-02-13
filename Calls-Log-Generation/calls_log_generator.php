@@ -48,7 +48,13 @@ function fillJournal($max_records = 1000)
                 '"' .
                 "," .
                 '"' .
-                strval(random_int(20, 5000)) >
+                strval(random_int(20, 5000)).
+                '"',
+                ",".
+                '"'.
+                strval(generateRandomDate()).
+                '"'.
+                ");";   
             $db->prepare($sql)->execute();
         $progressUpdated = intdiv($start * 100, $max_records);
         if ($progressUpdated != $currentProgress) {
