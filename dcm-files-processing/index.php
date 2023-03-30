@@ -13,12 +13,12 @@ function dcmRestorationPrepare($journalFile){
   foreach(glob('dcms/*.dcm') as $file){
     $fileContent = file_get_contents($file);
 	
-	// If the file is fine
+	// If the file is fine (№4)
     if(!isBrokenFile($fileContent)){
       $date = date('d.m.Y H:i:s');
       $data .= 'Validation;'. basename($file). "; $date\n";
     }
-	// If the file is broken 
+	// If the file is broken  (№5)
     else if (filesize($file)< $MAGIC_SIZE){
       $date = date('d.m.Y H:i:s');
       $data .= 'Found part;'. basename($file). "; $date\n";
@@ -32,7 +32,7 @@ function dcmRestorationPrepare($journalFile){
   return $parts;
 }
 
-/**Checks if the file is broken compairing queue of bytes with the sample*/
+/**Checks if the file is broken compairing queue of bytes with the sample (№1)*/
 function isBrokenFile($fileContent){
   $bites = substr($fileContent, 85, 4);
   $arr = unpack('C*', $bites);
@@ -40,7 +40,7 @@ function isBrokenFile($fileContent){
   return !empty(array_diff($true_arr, $arr));
 }
 
-/**Restores some result by the particular data*/
+/**Restores some result by the particular data (№7) */
 function restoreDcm($journalFile, $parts){
   $queue = array(2, 4, 3, 1, 5, 0);
   $contents = "";
@@ -49,6 +49,7 @@ function restoreDcm($journalFile, $parts){
   foreach($queue as $q){
     $filesize = filesize($parts[$q]);
     $f = fopen($parts[$q], 'rb');
+	//№6
     $contents .= fread($f, $filesize);
     fclose($f);
     $date = date('d.m.Y H:i:s');
