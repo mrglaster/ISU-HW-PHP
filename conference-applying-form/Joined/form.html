@@ -1,0 +1,47 @@
+<html>
+   <style>
+      form label, form input, form select {
+		display: block;
+		margin-bottom: 10px;
+      }
+	  body{
+		padding-left: 50px;
+	  }
+   </style>
+   <head>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <head>
+   <body>
+      <h2> Форма заявки на конференцию</h2>
+      <form method="POST" action="submit.php">
+         <label for="first_name">Имя:</label>
+         <input type="text" name="first_name" id="first_name" required>
+         <label for="last_name">Фамилия:</label>
+         <input type="text" name="last_name" id="last_name" required>
+         <label for="email">Электронный адрес:</label>
+         <input type="email" name="email" id="email" required>
+         <label for="phone">Телефон:</label>
+         <input type="tel" name="phone" id="phone" required>
+         <label for="interests">Интересующая тематика:</label>
+         <select name="interests" id="interests" required>
+            <option value="" disabled selected>Выберите тематику</option>
+            <option value="Бизнес">Бизнес</option>
+            <option value="Технологии">Технологии</option>
+            <option value="Реклама и Маркетинг">Реклама и Маркетинг</option>
+         </select>
+         <label for="payment_method">Предпочитаемый метод оплаты:</label>
+         <select name="payment_method" id="payment_method" required>
+            <option value="" disabled selected>Выберите метод оплаты</option>
+            <option value="WebMoney">WebMoney</option>
+            <option value="Яндекс.Деньги">Яндекс.Деньги</option>
+            <option value="PayPal">PayPal</option>
+            <option value="Кредитная карта">Кредитная карта</option>
+         </select>
+         <label for="newsletter">
+         <input type="checkbox" name="newsletter" id="newsletter">
+			Получать рассылку о конференции
+         </label>
+         <input type="submit" value="Отправить заявку">
+      </form>
+   </body>
+</html>
