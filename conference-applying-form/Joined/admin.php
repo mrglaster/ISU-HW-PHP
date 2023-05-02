@@ -15,6 +15,8 @@ th {
   color: white;
 }
 </style>
+
+
 <?php
 $dir = 'applications/'; // Папка с файлами заявок
 $files = array_diff(scandir($dir), array('..', '.')); // Получение списка файлов
